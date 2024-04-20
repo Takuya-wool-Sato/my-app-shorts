@@ -1,17 +1,16 @@
 <div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= post.content %>
-  </p>
-
-  <p>
-    <strong>Url:</strong>
-    <%= post.url %>
-  </p>
-
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+    <div class="card-body">
+      <h2 class="card-title">
+        <%= post.title %>
+        <div class="badge badge-secondary">NEW</div>
+      </h2>
+      <p><%= post.content %></p>
+      <div class="card-actions justify-end">
+        <div class="badge badge-outline"><%= post.url %></div>
+      </div>
+      <%= link_to "Show this post", post %>
+    </div>
+  </div>
 </div>
