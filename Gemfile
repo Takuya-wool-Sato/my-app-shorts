@@ -78,3 +78,5 @@ gem 'devise'
 
 gem 'cssbundling-rails'
 gem 'jsbundling-rails'
+
+gem 'webpacker', '~> 5.x'
