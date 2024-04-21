@@ -1,11 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
-
-<div id="posts" class="p-5">
-  <% @posts.each do |post| %>
-    <%= render post %>
-  <% end %>
+<div id="posts">
+  <div class="splide" role="group" aria-label="Splideの基本的なHTML">
+    <div class="splide__track">
+      <ul class="splide__list">
+        <% @posts.each do |post| %>
+          <li class="splide__slide h-full"><%= render post %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="splide__progress">
+      <div class="splide__progress__bar">
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to "New post", new_post_path %>
+<style>
+  .splide__progress__bar {
+    height: 3px;
+    background: #ccc;
+  }
+</style>
