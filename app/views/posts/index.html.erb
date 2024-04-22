@@ -1,11 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<div id="posts">
-  <div class="splide" role="group" aria-label="Splideの基本的なHTML">
-    <div class="splide__track">
-      <ul class="splide__list">
+<div id="posts" class="h-full">
+  <div class="splide h-full" role="group" aria-label="Splideの基本的なHTML">
+    <div class="splide__track h-5/6">
+      <ul class="splide__list h-full">
         <% @posts.each do |post| %>
-          <li class="splide__slide h-full"><%= render post %></li>
+          <li class="splide__slide h-full p-5">
+            <%= link_to post, class: 'no-underline block h-full' do %>
+              <%= render post %>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>

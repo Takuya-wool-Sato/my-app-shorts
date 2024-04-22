@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = current_user.posts.all
+    @posts = current_user.posts.order("RANDOM()").all
   end
 
   # GET /posts/1 or /posts/1.json

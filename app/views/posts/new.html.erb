@@ -1,7 +1,9 @@
-<h1 class="text-2xl">New post</h1>
+<div class="p-5">
+  <h1 class="text-2xl">新しいポスト</h1>
 
-<%= render "form", post: @post %>
+  <%= render "form", post: @post %>
 
-<div class="mt-3">
-  <%= link_to "Back to posts", posts_path, class: "btn btn-outline btn-accent" %>
+  <div class="mt-3">
+    <%= link_to "Back to posts", posts_path, class: "btn btn-outline btn-accent" %>
+  </div>
 </div>
