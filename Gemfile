@@ -77,4 +77,7 @@ end
 gem 'devise'
 
 gem 'cssbundling-rails'
+
 gem 'jsbundling-rails'
+
+gem 'metainspector'
