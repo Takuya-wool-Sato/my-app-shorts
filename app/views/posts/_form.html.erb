@@ -26,6 +26,10 @@
     <%= form.text_field :url, class: "input input-bordered w-full"  %>
   </div>
 
+  <% @categories.each do |category| %>
+    <label class="inline-flex mt-3 mr-3"><%= form.radio_button(:category_id, category.id, class: "radio radio-accent")  %><%= category.name %></label>
+  <% end %>
+
   <div class="mt-3">
     <%= form.submit class: "btn btn-accent" %>
   </div>

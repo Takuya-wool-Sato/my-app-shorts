@@ -5,7 +5,13 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+    @categories = Category.all
     @posts = current_user.posts.order("RANDOM()").all
+  end
+
+  # GET /posts or /posts.json
+  def list
+    @posts = current_user.posts.all
   end
 
   # GET /posts/1 or /posts/1.json
@@ -15,10 +21,12 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   # GET /posts/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /posts or /posts.json
@@ -71,6 +79,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :url)
+      params.require(:post).permit(:title, :content, :url, :category_id)
     end
 end
