@@ -28,6 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_27_133827) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.string "image_url"
+    t.string "meta_title"
+    t.string "meta_description"
     t.integer "category_id", default: 1
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

@@ -1,10 +1,40 @@
-<div class="p-5">
-  <p style="color: green"><%= notice %></p>
-
-  <%= render @post %>
-
-  <div class="flex justify-between w-full mt-3">
-    <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-outline btn-accent" %>
-    <%= button_to "Delete", @post, method: :delete, class: "btn btn-outline btn-error" %>
+<div id="<%= dom_id @post %>" class="flex justify-center rounded-none">
+  <div class="w-full bg-base-100 rounded-none">
+    <% if @post.image_url? %>
+      <figure class="rounded-none">
+        <a href="<%= @post.url %>" target="_blank" class="flex justify-center">
+          <img src="<%= @post.image_url %>" alt="" class="max-h-48"/>
+        </a>
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">
+          <% if @post.title? %>
+            <%= @post.title %>
+          <% else %>
+            <%= @post.meta_title %>
+          <% end %>
+        </h2>
+        <p>
+          <% if @post.content? %>
+            <%= @post.content %>
+          <% else %>
+            <%= @post.meta_description %>
+          <% end %>
+        </p>
+      </div>
+    <% else %>
+      <% category =  Category.find(@post.category_id) %>
+      <h2 class="card-title bg-sky-100 p-5 min-h-40 relative rounded-t-lg">
+        <%= @post.title %>
+        <p class="absolute text-8xl opacity-5 right-0 bottom-0"><%= category.name %></p>
+      </h2>
+      <div class="card-body">
+        <p><%= @post.content %></p>
+      </div>
+    <% end %>
+    <div class="flex justify-between w-full mt-3 p-5">
+      <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-outline btn-accent" %>
+      <%= button_to "Delete", @post, method: :delete, class: "btn btn-outline btn-error" %>
+    </div>
   </div>
 </div>

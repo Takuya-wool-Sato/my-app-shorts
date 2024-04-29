@@ -10,12 +10,13 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
     <div class="navbar bg-base-100 fixed z-10">
       <div class="flex-1">
-        <a class="btn btn-ghost text-xl">daisyUI</a>
+        <a href="/" class="btn btn-ghost text-xl">MyShorts</a>
       </div>
       <div class="flex-none">
         <div class="dropdown dropdown-end">
@@ -25,17 +26,16 @@
           </div>
           <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             <li>
-              <a href="" class="justify-between">
+              <a href="/profile" class="justify-between">
                 Profile
               </a>
             </li>
-            <li><a href="/">Settings</a></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="pt-16 pb-16" style="height: 95vh">
+    <div class="pt-16 pb-16 relative" style="height: 90vh">
       <%= yield %>
     </div>
     <div class="btm-nav">

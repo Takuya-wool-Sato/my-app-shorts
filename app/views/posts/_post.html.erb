@@ -1,12 +1,22 @@
 <div id="<%= dom_id post %>" class="flex justify-center">
   <div class="card w-full bg-base-100 shadow-xl">
     <% if post.image_url? %>
-      <figure><img src="<%= post.image_url %>" alt="" /></figure>
+      <figure><img src="<%= post.image_url %>" alt=""  class="max-h-60" /></figure>
       <div class="card-body">
         <h2 class="card-title">
-          <%= post.title %>
+          <% if post.title? %>
+            <%= post.title %>
+          <% else %>
+            <%= post.meta_title %>
+          <% end %>
         </h2>
-        <p><%= post.content %></p>
+        <p>
+          <% if post.content? %>
+            <%= post.content %>
+          <% else %>
+            <%= post.meta_description %>
+          <% end %>
+        </p>
       </div>
     <% else %>
       <% category =  Category.find(post.category_id) %>

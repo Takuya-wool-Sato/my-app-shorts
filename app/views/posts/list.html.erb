@@ -1,12 +1,14 @@
 <div class="p-5">
-  <p style="color: green"><%= notice %></p>
-
   <div id="posts" class="h-full">
-    <ul class="">
+    <ul class="grid gap-3">
       <% @posts.each do |post| %>
         <li>
-          <%= link_to edit_post_path(post), class: 'p-2 border rounded-sm block' do %>
+          <%= link_to edit_post_path(post), class: 'p-2 border rounded-lg block border-slate-300' do %>
+          <% if post.title? %>
             <%= post.title %>
+          <% else %>
+            <%= post.meta_title %>
+          <% end %>
           <% end %>
         </li>
       <% end %>

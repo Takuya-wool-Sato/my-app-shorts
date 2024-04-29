@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def index
     @categories = Category.all
     @posts = current_user.posts.order("RANDOM()").all
+    @post = Post.new
   end
 
   # GET /posts or /posts.json
@@ -34,6 +35,8 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @metadata = fetch_metadata(@post.url) if @post.url.present?
     @post.image_url = @metadata[:image_url] if @metadata.present?
+    @post.meta_title = @metadata[:title] if @metadata.present?
+    @post.meta_description = @metadata[:description] if @metadata.present?
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
@@ -50,6 +53,8 @@ class PostsController < ApplicationController
     @post.assign_attributes(post_params)
     @metadata = fetch_metadata(@post.url) if @post.url.present?
     @post.image_url = @metadata[:image_url] if @metadata.present?
+    @post.meta_title = @metadata[:title] if @metadata.present?
+    @post.meta_description = @metadata[:description] if @metadata.present?
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
@@ -79,6 +84,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :url, :category_id)
+      params.require(:post).permit(:title, :content, :url, :meta_title, :meta_description, :category_id)
     end
 end
