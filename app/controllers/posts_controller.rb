@@ -6,7 +6,8 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @categories = Category.all
-    @posts = current_user.posts.order("RANDOM()").all
+    # @posts = current_user.posts.order("RANDOM()").all
+    @posts = current_user.posts.order("RAND()").all
     @post = Post.new
   end
 
