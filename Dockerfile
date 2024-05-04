@@ -1,4 +1,4 @@
-FROM node:16.15-stretch as node
+FROM node:20.9.0 as node
 FROM ruby:3.1.2
 
 # yarnとnodeのインストール

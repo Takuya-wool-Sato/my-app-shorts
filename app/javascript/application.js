@@ -1,7 +1,5 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 
-import Splide from '@splidejs/splide';
-
 const splideSection = document.getElementById("splideSection");
 if (splideSection) {
   var splide = new Splide( '.splide', {
