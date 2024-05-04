@@ -81,3 +81,5 @@ gem 'cssbundling-rails'
 gem 'jsbundling-rails'
 
 gem 'metainspector'
+
+gem 'mysql2'
