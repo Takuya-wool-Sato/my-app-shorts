@@ -27,7 +27,7 @@
   </div>
 
   <% @categories.each do |category| %>
-    <label class="inline-flex mt-3 mr-3"><%= form.radio_button(:category_id, category.id, class: "radio radio-accent")  %><%= category.name %></label>
+    <label class="inline-flex mt-3 mr-3"><%= form.radio_button(:category_id, category.id, class: "radio radio-accent")  %><span class="ml-1"><%= category.name %></span></label>
   <% end %>
 
   <div class="mt-3">
