@@ -3,7 +3,7 @@
     <div class="splide__track h-full">
       <ul class="splide__list h-full">
         <% @posts.each do |post| %>
-          <li class="splide__slide h-full p-5 overflow-auto mb-5">
+          <li class="splide__slide h-full overflow-auto mb-5">
             <%= link_to post, class: 'no-underline block h-full' do %>
               <%= render post %>
             <% end %>
