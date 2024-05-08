@@ -5,6 +5,7 @@ if (splideSection) {
   var splide = new Splide( '.splide', {
     type    : 'loop',
     autoplay: true,
+    resetProgress: false,
     arrows: false, // 矢印ボタンを非表示
     interval: 4000
   });

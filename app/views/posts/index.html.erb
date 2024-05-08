@@ -1,22 +1,29 @@
 <div id="posts" class="h-full">
-  <div class="splide h-full" role="group" aria-label="" id="splideSection">
-    <div class="splide__track h-full">
-      <ul class="splide__list h-full">
-        <% @posts.each do |post| %>
-          <li class="splide__slide h-full overflow-auto mb-5">
-            <%= link_to post, class: 'no-underline block h-full' do %>
+  <div class="splide h-full splide__toggle" role="group" aria-label="" id="splideSection" type="button">
+    <button class="splide__toggle block h-full w-full">
+      <div class="splide__track h-full">
+        <ul class="splide__list h-full">
+          <% @posts.each do |post| %>
+            <li class="splide__slide h-full overflow-auto mb-5">
               <%= render post %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="splide__progress bottom-20 fixed w-full">
-      <div class="splide__progress__bar">
+            </li>
+          <% end %>
+        </ul>
       </div>
-    </div>
+      <div class="splide__progress bottom-20 fixed w-full">
+        <div class="splide__progress__bar">
+        </div>
+      </div>
+    </button>
   </div>
 </div>
+
+<!-- ページネーションの非表示 -->
+<style>
+.splide__pagination {
+  display: none;
+}
+</style>
 
 <!-- Open the modal using ID.showModal() method -->
 <button class="btn fixed right-5 bottom-20 rounded-full opacity-80" onclick="my_modal_2.showModal()"><svg width="18" height="18" viewBox="0 0 48 48" class="w-5 h-5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 42H43" stroke="currentColor" stroke-width="4" stroke-linecap="butt" stroke-linejoin="bevel"></path><path d="M11 26.7199V34H18.3172L39 13.3081L31.6951 6L11 26.7199Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="bevel"></path></svg></button>
