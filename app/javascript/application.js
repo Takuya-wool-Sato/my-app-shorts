@@ -1,19 +1,5 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 
-const splideSection = document.getElementById("splideSection");
-if (splideSection) {
-  var splide = new Splide( '.splide', {
-    type    : 'loop',
-    autoplay: true,
-    resetProgress: false,
-    arrows: false, // 矢印ボタンを非表示
-    interval: 4000
-  });
-  splide.mount();
-} else {
-  console.log("要素が見つからないため、処理は行われません。");
-}
-
 document.addEventListener("DOMContentLoaded", function() {
   // 通知要素を取得
   var notificationElement = document.getElementById("notification");
