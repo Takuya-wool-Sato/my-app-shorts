@@ -19,6 +19,10 @@ services:
       - "3000:3000"
     depends_on:
       - db
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
 volumes:
   mysql:
   bundle:
