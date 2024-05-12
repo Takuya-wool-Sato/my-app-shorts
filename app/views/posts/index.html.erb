@@ -91,7 +91,7 @@
       autoplay: true,
       resetProgress: false,
       arrows: false,
-      interval: 4000,
+      interval: <%= current_user.setting.interval %>,
       direction: 'ttb',
       wheelSleep: 1000,
       heightRatio: 1.5
