@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :settings
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   resources :posts
   get '/list' => 'posts#list'
   get '/profile' => 'profile#index'
