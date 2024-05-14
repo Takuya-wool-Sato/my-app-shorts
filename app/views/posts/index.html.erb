@@ -1,7 +1,7 @@
 <div id="posts" class="h-full">
   <div class="splide h-full splide__toggle" role="group" aria-label="" id="splideSection" type="button">
     <button class="splide__toggle block h-full w-full flex">
-      <div class="splide__track h-full">
+      <div class="splide__track h-full w-full">
         <ul class="splide__list h-full">
           <% @posts.each do |post| %>
             <li class="splide__slide h-full overflow-auto mb-5">
@@ -16,6 +16,23 @@
       </div>
     </button>
   </div>
+  <select class="select select-bordered select-sm max-w-xs mr-4 fixed bottom-36 right-2"
+    onchange="navigateToPage(this.value)">
+    <option value="/">
+      全て
+    </option>
+    <% @categories.each do |category| %>
+        <% if category.id.to_s == params[:category].to_s %>
+          <option value="/?category=<%= category.id %>" selected>
+            <%= category.name %>
+          </option>
+        <% else %>
+          <option value="/?category=<%= category.id %>">
+            <%= category.name %>
+          </option>
+        <% end %>
+      <% end %>
+  </select>
 </div>
 
 <!-- ページネーションの非表示 -->
@@ -34,7 +51,7 @@
   </svg></button>
 <dialog id="my_modal_2" class="modal">
   <div class="modal-box fixed m-auto w-full left-0 right-0">
-    <h3 class="font-bold text-lg">クイックメモ</h3>
+    <h3 class="font-bold text-lg">クイックポスト</h3>
     <%= form_with(model: @post) do |form| %>
       <% if @post.errors.any? %>
         <div style="color: red">
@@ -63,8 +80,8 @@
               <%= form.label :url, style: "display: block" %>
                 <%= form.text_field :url, class: "input input-bordered w-full" %>
             </div>
-
-            <%= form.radio_button(:category_id, 1, class: "radio radio-accent hidden" ) %>
+            <% @quick_category =  Category.where(user_id: current_user.id).first %>
+            <%= form.radio_button(:category_id, 3, class: "radio radio-accent hidden" ) %>
 
               <div class="mt-5">
                 <%= form.submit class: "btn btn-accent" %>
@@ -84,20 +101,25 @@
 </style>
 
 <%= javascript_tag do %>
+  function navigateToPage(value) {
+  if (value !== "#") {
+  window.location.href = value;
+  }
+  }
   const splideSection = document.getElementById("splideSection");
   if (splideSection) {
-    var splide = new Splide( '.splide', {
-      type    : 'loop',
-      autoplay: true,
-      resetProgress: false,
-      arrows: false,
-      interval: <%= current_user.setting.interval %>,
-      direction: 'ttb',
-      wheelSleep: 1000,
-      heightRatio: 1.5
+  var splide = new Splide( '.splide', {
+  type : 'loop',
+  autoplay: true,
+  resetProgress: false,
+  arrows: false,
+  interval: <%= current_user.setting.interval %>,
+    direction: 'ttb',
+    wheelSleep: 1000,
+    heightRatio: 1.5
     });
     splide.mount();
-  } else {
+    } else {
     console.log("要素が見つからないため、処理は行われません。");
-  }
-<% end %>
+    }
+    <% end %>

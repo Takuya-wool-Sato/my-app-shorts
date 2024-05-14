@@ -5,9 +5,13 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @categories = Category.all
+    @categories = Category.where(user_id: current_user.id)
+    if params[:category].present?
+      @posts = current_user.posts.where(category_id: params[:category]).order("RAND()")
+    else
+      @posts = current_user.posts.order("RAND()").all
+    end
     # @posts = current_user.posts.order("RANDOM()").all
-    @posts = current_user.posts.order("RAND()").all
     @post = Post.new
   end
 
