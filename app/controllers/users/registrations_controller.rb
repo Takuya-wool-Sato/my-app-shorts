@@ -13,7 +13,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
 
+    #アカウント作成時、デフォルトでショート設定・カテゴリーを作成
     resource.build_setting
+    categories_attributes = [{ name: "メモ" }, { name: "タスク" }, { name: "学習" }]
+    categories_attributes.each do |category_attributes|
+      resource.categories.build(category_attributes)
+    end
     resource.save
   end
 

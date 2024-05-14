@@ -23,12 +23,12 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @categories = Category.all
+    @categories = Category.where(user_id: current_user.id)
   end
 
   # GET /posts/1/edit
   def edit
-    @categories = Category.all
+    @categories = Category.where(user_id: current_user.id)
   end
 
   # POST /posts or /posts.json
