@@ -1,32 +1,39 @@
 <div id="<%= dom_id post %>" class="flex justify-center">
   <div class="w-full bg-base-100 mb-20 rounded-none text-left">
     <% if post.image_url? %>
-      <figure class="flex justify-center"><img src="<%= post.image_url %>" alt=""  class="max-h-60" /></figure>
+      <figure class="flex justify-center"><img src="<%= post.image_url %>" alt="" class="max-h-60" /></figure>
       <div class="card-body">
         <h2 class="card-title">
           <% if post.title? %>
             <%= post.title %>
-          <% else %>
-            <%= post.meta_title %>
-          <% end %>
+              <% else %>
+                <%= post.meta_title %>
+                  <% end %>
+                    <%= link_to "詳細" , post_path(post), class: "btn btn-outline btn-accent" %>
         </h2>
         <p>
           <% if post.content? %>
             <%= safe_join(post.content.split("\n"),tag(:br)) %>
-          <% else %>
-            <%= post.meta_description %>
-          <% end %>
+              <% else %>
+                <%= post.meta_description %>
+                  <% end %>
         </p>
       </div>
-    <% else %>
-      <% category =  Category.find(post.category_id) %>
-      <h2 class="card-title bg-sky-100 p-5 min-h-40 relative">
-        <%= post.title %>
-        <p class="absolute text-8xl opacity-5 right-0 bottom-0"><%= category.name %></p>
-      </h2>
-      <div class="card-body">
-        <p><%= safe_join(post.content.split("\n"),tag(:br)) %></p>
-      </div>
-    <% end %>
+      <% else %>
+        <% category=Category.find(post.category_id) %>
+          <h2 class="card-title bg-sky-100 p-5 min-h-40 relative">
+            <%= post.title %>
+              <p class="absolute text-8xl opacity-5 right-0 bottom-0">
+                <%= category.name %>
+              </p>
+              <%= link_to "詳細" , post_path(post),
+                class: "text-slate-300 underline text-sm absolute right-4 bottom-4 text-black opacity-60" %>
+          </h2>
+          <div class="card-body">
+            <p>
+              <%= safe_join(post.content.split("\n"),tag(:br)) %>
+            </p>
+          </div>
+          <% end %>
   </div>
 </div>
