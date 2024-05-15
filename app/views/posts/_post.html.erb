@@ -1,8 +1,7 @@
 <div id="<%= dom_id post %>" class="flex justify-center">
   <div class="w-full bg-base-100 mb-20 rounded-none text-left">
     <% if post.image_url? %>
-      <figure class="flex justify-center relative"><img src="<%= post.image_url %>" alt="" class="max-h-60" /><<%= link_to "詳細" , post_path(post),
-                      class: "btn text-slate-300 underline text-sm absolute right-4 bottom-4 text-black opacity-60" %></figure>
+      <figure class="flex justify-center relative"><img src="<%= post.image_url %>" alt="" class="max-h-60" /><%= link_to "詳細" , post_path(post),class: "btn text-slate-300 underline text-sm absolute right-4 bottom-4 text-black opacity-60" %></figure>
       <div class="card-body">
         <h2 class="card-title relative">
           <% if post.title? %>
