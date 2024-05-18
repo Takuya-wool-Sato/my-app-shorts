@@ -27,10 +27,16 @@
         </div>
       </div>
     <% else %>
-      <% category =  Category.find(@post.category_id) %>
+      <% category = Category.find_by(id: post.category_id) %>
       <h2 class="card-title bg-sky-100 p-5 min-h-40 relative">
         <%= @post.title %>
-        <p class="absolute text-8xl opacity-5 right-0 bottom-0"><%= category.name %></p>
+        <p class="absolute text-8xl opacity-5 right-0 bottom-0">
+        <% if category.present? %>
+          <p class="absolute text-8xl opacity-5 right-0 bottom-0">
+            <%= category.name %>
+          </p>
+        <% end %>
+        </p>
       </h2>
       <div class="card-body">
         <p><%= safe_join(@post.content.split("\n"),tag(:br)) %></p>
