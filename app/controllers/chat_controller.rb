@@ -3,7 +3,7 @@ class ChatController < ApplicationController
     if params[:question].present?
       service = ChatGptService.new
       begin
-        @response = JSON.parse(service.chat("以下のお題に対して、有益な情報をタイトルとその具体例をJSON配列（キーは必要ありません）で5個ください。1個出力最大100トークンまでで、具体例は〜が良いや、〜できるみたいな形で終わらせてください。お題：#{params[:question]}"))
+        @response = JSON.parse(service.chat("以下のお題に対して、有益な情報をタイトルとその具体例をJSON配列（キーは必要ありません）で5個ください 具体例は〜が良いや、〜できるみたいな形で終わらせてください。お題：#{params[:question]}"))
         # @responseをeachで回してpostsテーブルに保存
         @response.each do |key, value|
           Post.create(
