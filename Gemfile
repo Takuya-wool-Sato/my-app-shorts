@@ -83,3 +83,7 @@ gem 'jsbundling-rails'
 gem 'metainspector'
 
 gem "mysql2", "~> 0.5"
+
+gem "ruby-openai"
+
+gem "dotenv-rails"

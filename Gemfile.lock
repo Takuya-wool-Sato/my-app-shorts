@@ -97,7 +97,12 @@ GEM
       responders
       warden (~> 1.2.3)
     domain_name (0.6.20240107)
+    dotenv (3.1.4)
+    dotenv-rails (3.1.4)
+      dotenv (= 3.1.4)
+      railties (>= 6.1)
     erubi (1.12.0)
+    event_stream_parser (1.0.0)
     faraday (2.9.0)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-cookie_jar (0.0.7)
@@ -112,6 +117,8 @@ GEM
       zlib (~> 2.1)
     faraday-http-cache (2.5.1)
       faraday (>= 0.8)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
     faraday-net_http (3.1.0)
       net-http
     faraday-retry (2.2.1)
@@ -162,6 +169,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.2)
+    multipart-post (2.4.1)
     mysql2 (0.5.6)
     nesty (1.0.2)
     net-http (0.4.1)
@@ -177,6 +185,8 @@ GEM
       net-protocol
     nio4r (2.7.1)
     nokogiri (1.16.4-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.4-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
@@ -228,6 +238,10 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    ruby-openai (7.3.1)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     rubyzip (2.3.2)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -244,6 +258,8 @@ GEM
       railties (>= 6.0.0)
     stringio (3.1.0)
     tailwindcss-rails (2.5.0-aarch64-linux)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.5.0-x86_64-darwin)
       railties (>= 6.0.0)
     tailwindcss-rails (2.5.0-x86_64-linux)
       railties (>= 6.0.0)
@@ -278,6 +294,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -286,6 +303,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  dotenv-rails
   importmap-rails
   jbuilder
   jsbundling-rails
@@ -293,6 +311,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.4)
+  ruby-openai
   selenium-webdriver
   sprockets-rails
   stimulus-rails

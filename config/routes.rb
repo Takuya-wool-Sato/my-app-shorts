@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/profile' => 'profile#index'
   get '/setting' => 'settings#edit'
   get '/update' => 'update#index'
+  post '/ask', to: 'chat#ask'
+  get '/ask', to: 'chat#ask'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
