@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_14_163423) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_10_161506) do
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_14_163423) do
     t.string "meta_title"
     t.text "meta_description"
     t.integer "category_id", default: 1
+    t.string "question_content"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
